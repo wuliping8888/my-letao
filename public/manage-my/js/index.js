@@ -1,4 +1,14 @@
 $(function () {
+    //刚开始的时候要判断用户是否登录，调用登录的接口
+    $.ajax({
+        url: "/employee/checkRootLogin",
+        success: function (backdata) {
+            console.log(backdata);
+            if (backdata.error == 400) {
+                window.location.href = "login.html"
+            }
+        }
+    })
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main-left'));
 
@@ -80,4 +90,27 @@ $(function () {
 
     // 使用刚指定的配置项和数据显示图表。
     myChartright.setOption(option2);
+
+
+
+    $('#right .header a').first().click(function () {
+        $('#left').toggle();
+        $('#right').toggleClass('pad')
+    })
+    $('#right .header a').last().click(function () {
+        $('#myModal').modal('show')
+    })
+
+    //点击确定退出的时候跳转到登录页,点击退出的时候要调用退出的接口，否则下次输入首页地址会直接登录进来
+    $('.modal-footer button').last().click(function () {
+        
+        $.ajax({
+            url: "/employee/employeeLogout",
+            success: function (backdata) {
+                // console.log(backdata)
+                window.location.href = "./login.html"
+            }
+        })
+    })
+
 })

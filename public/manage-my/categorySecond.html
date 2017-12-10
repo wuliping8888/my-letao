@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet/less" href="./less/base.less">
+    <!-- <link rel="stylesheet/less" href="./less/user.less"> -->
+    <script src="./lib/less/less.js"></script>
+</head>
+
+<body>
+    <div id="left">
+        <h3>
+            <a href="#">ITCASH</a>
+        </h3>
+        <div class="content">
+            <div class="header">
+                <img src="./image/default.png" alt="">
+                <span>超级管理员</span>
+            </div>
+
+            <ul>
+                <li class="">
+                    <a href="./user.html">
+                        <span class="glyphicon glyphicon-user"></span>用户管理</a>
+                </li>
+                <li class="active">
+                    <a href="javascript:void(0)">
+                        <span class="glyphicon glyphicon-list"></span>分类管理</a>
+                    <ol>
+                        <li>
+                            <a href="./categoryFirst.html">一级分类</a>
+                        </li>
+                        <li>
+                            <a href="./categorySecond.html" style="color:#fff">二级分类</a>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <a href="./products.html">
+                        <span class="glyphicon glyphicon-tags"></span>商品管理</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="right">
+
+        <div class="header">
+            <a href="#" class="glyphicon glyphicon-align-justify pull-left"></a>
+            <a href="#" class="glyphicon glyphicon-share pull-right"></a>
+            </a>
+        </div>
+        <div class="content">
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">管理系统</a>
+                </li>
+                <li>分类管理</li>
+                <li>二级管理</li>
+            </ol>
+            <button class="btn btn-default md-30" data-toggle="modal" data-target=".modal-add">添加分类</button>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>一级分类名称</th>
+                        <th>二级分类名称</th>
+                        <th>二级分类LOGO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <script id='secondTmp' type="text/html">
+                        {{each rows as value i}}
+                        <tr>
+                            <th scope="row">{{(page-1)*size+i+1}}</th>
+                            <td>{{value.categoryName}}</td>
+                            <td>{{value.brandName}}</td>
+                            <td>
+                                <img style="width:80px" src="{{value.brandLogo}}" alt="">
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </script>
+                </tbody>
+            </table>
+
+            <ul id="pagintor"></ul>
+
+        </div>
+    </div>
+
+    <!-- 模态框确认是否退出登录 -->
+
+    <div id="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">温馨提示</h4>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">
+                        <span class="glyphicon glyphicon-info-sign"></span>您确定要退出后台管理系统吗?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- 模态框确认是否添加分类 -->
+    <div class="modal fade modal-add" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">添加分类</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="second">
+                        <div class="form-group">
+                            <span class="pull-left">一级分类：</span>
+                            <div class="dropdown pull-left">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                      请选择
+                                      <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                      <li><a href="#">Action</a></li>
+                                      <li><a href="#">Another action</a></li>
+                                    </ul>
+                                  </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" id="exampleInputPassword1" placeholder="请输入二级分类名称">
+                        </div>
+                        <div class="form-group">
+                                <input type="file" id="exampleInputFile">
+                              </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" form="second" class="btn btn-primary">确认</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+</body>
+
+</html>
+<script src="./lib/jquery/jquery.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/artTemplate/template.js"></script>
+<script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+<script src="./js/comment.js"></script>
+<script src="./js/categorySecond.js"></script>
