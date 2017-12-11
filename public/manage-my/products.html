@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet/less" href="./less/base.less">
     <!-- <link rel="stylesheet/less" href="./less/user.less"> -->
     <script src="./lib/less/less.js"></script>
@@ -97,8 +98,9 @@
                 </tbody>
             </table>
 
-            <ul id="pagintor"></ul>
+           
         </div>
+        <ul id="pagintor"></ul>
     </div>
 
     <!-- 模态框 -->
@@ -139,30 +141,36 @@
                     <h4 class="modal-title">编辑商品</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="forms">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="请输入商品名称">
+                            <input type="text" class="form-control" id="exampleInputEmail1" name="proName" placeholder="请输入商品名称">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" id="exampleInputPassword1" placeholder="请输入商品描述"></textarea>
+                            <textarea class="form-control" id="exampleInputPassword1" name="proDesc" placeholder="请输入商品描述"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请输入商品库存">
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="num" placeholder="请输入商品库存">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请输入商品价格">
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="price" placeholder="请输入商品价格">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请输入商品原价">
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="oldPrice" placeholder="请输入商品原价">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="请输入商品尺码">
+                            <input type="text" hidden class="form-control" id="exampleInputPassword1" name="size" placeholder="请输入商品尺码">
+                        </div>
+                        <div class="form-group">
+                                <input id="fileupload" class="filedset" type="file" name="pic1" data-url="/product/addProductPic" multiple>
+                                <a href="javascript:void(0)">上传图片</a>
+                                <span>提示：必须上传3张</span>
+                                <br>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="submit" class="btn btn-primary">确定</button>
+                    <button type="submit" class="btn btn-primary" form="forms">确定</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -174,9 +182,12 @@
 </body>
 
 </html>
-<script src="./lib/jquery/jquery.min.js"></script>
+<script src="./lib/jquery/jquery.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/artTemplate/template.js"></script>
 <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
+<script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
 <script src="./js/comment.js"></script>
 <script src="./js/products.js"></script>

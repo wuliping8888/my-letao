@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.css">
     <link rel="stylesheet/less" href="./less/base.less">
     <!-- <link rel="stylesheet/less" href="./less/user.less"> -->
     <script src="./lib/less/less.js"></script>
@@ -132,7 +133,6 @@
                 <div class="modal-body">
                     <form id="second">
                         <div class="form-group">
-                            
                             <div class="dropdown">
                                     <span>一级分类：</span>
                                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -144,15 +144,20 @@
                                       <li><a href="#">Another action</a></li>
                                     </ul>
                                   </div>
+                            <input type="text" name="categoryId" hidden>    
                         </div>
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" id="exampleInputPassword1" placeholder="请输入二级分类名称">
+                            <input type="text" name="brandName" class="form-control" id="exampleInputPassword1" placeholder="请输入二级分类名称">
                         </div>
-                        <div class="form-group" id="filedset">
+                        
+                        <div class="form-group">
                                 <!-- <input id="fileupload" type="file" name="files" data-url="server/php/" multiple> -->
-                                <input type="file" id="fileupload" type="file" name="pic1" data-url="/category/addSecondCategoryPic">
+                                <input type="file" id="fileupload" class="filedset" type="file" name="pic1" data-url="/category/addSecondCategoryPic">
+                                <input type="text" name="brandLogo" hidden>
+                                <a href="javascript:void(0)" class="btn btn-default md-30">请选择图片</a> 
+                               
                         </div>
-                        <a href="javascript:void(0)" class="btn btn-default md-30">请选择图片</a>
+                       
                         <div>
                                 <img src="./image/none.png" alt="" style="width:100px" class="imgs">
                         </div>
@@ -175,6 +180,7 @@
 </html>
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/bootstrap-validator/js/bootstrapValidator.js"></script>
 <script src="./lib/artTemplate/template.js"></script>
 <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
 <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
